@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>routine builder</title>
+</head>
+<body>
+      
+<form action="/routine_processor" method="get">
+    Routine name: <input type="text" name="RoutineName"><br>
+  <input type="checkbox" name="audio_file" value="tiny_oo">tiny oo     <audio controls>
+  <source src="static/tiny_oo.mp3" type="audio/mpeg">
+<!--   <source src="bratty_a.mp3" type="audio/mp3">
+  <source src="tongue_trills.mp3" type="audio/mp3"> -->
+These are audio files.
+</audio><br><br>
+ <input type="checkbox" name="audio_file" value="bratty_a">bratty a     <audio controls>
+  <source src="static/bratty_a.mp3" type="audio/mpeg">
+<!--   <source src="bratty_a.mp3" type="audio/mp3">
+  <source src="tongue_trills.mp3" type="audio/mp3"> -->
+These are audio files.
+</audio><br><br>
+ <input type="checkbox" name="audio_file" value="tongue_trills">tongue trills     <audio controls>
+  <source src="static/tongue_trills.mp3" type="audio/mpeg">
+<!--   <source src="bratty_a.mp3" type="audio/mp3">
+  <source src="tongue_trills.mp3" type="audio/mp3"> -->
+These are audio files.
+</audio><br><br>
+  <input type="submit" value="Submit">
+  <!-- if the box is checked, create a new row with the associated value 
+and the name of the routine 
+enter that new row into the database -->
+</form>
+
+</body>
+</html>

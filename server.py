@@ -33,10 +33,18 @@ def routine_builder():
 @app.route('/routine_processor')
 def process_routines():
     """Processes routine selected."""
-    # pass
+ # get the name of the routine and put it in the routines table
+#     routine_name = request.args.get("RoutineName")
+#     new_routine = Routine(r_id=1, name=routine_name, u_id=1)
+
+#     db.session.add(new_routine)
+#     db.session.commit()
 # #get data from checked boxes
-# for each checked item:
-# add it to audio-routines with that routine 
+    routine = request.args.getlist("audio_file")
+    print routine
+#     for i in routine:
+# # add the associated a_id to the audio_routines table 
+
 
     return render_template("routine_selector.html")
 
