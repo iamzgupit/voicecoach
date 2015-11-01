@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>routine selector</title>
+</head>
+<body>
+
+    <div class="well spaced" style="width:50%;">
+  <h2>ROUTINE SELECTOR</h2>
+  <ul>
+  {% for routine in routines %}
+    <li>
+      <a href="/play_routine/{{routine.r_id}}">{{ routine.name }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+
+</div>
+
+</body>
+</html>
