@@ -65,6 +65,7 @@ def display_routines():
 def select_routine():
     """Presents routines for users to select."""
     routines = Routine.query.order_by('r_id').all()
+
     return render_template("play_routine.html", routines=routines)
 
 @app.route('/play_routine/<int:r_id>')
