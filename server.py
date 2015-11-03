@@ -41,12 +41,13 @@ def add_routines():
     db.session.commit()
 
 # #get data from checked boxes
-    routine = request.args.getlist("audio_file")
-    routines = Routine.query.order_by('r_id').all()
-    for i in routine:
+    selected_audio_files = request.args.getlist("audio_file")
+    for i in selected_audio_files:
+        print "user selected audio file name: ", i
 # # add the associated a_id to the audio_routines table 
         # by getting the associated a_id from the audio_files table
         audiofile = AudioFile.query.filter_by(name=i).first()
+        print "audiofile from db: ", audiofile
         # add the routines id to the audio_routines table too
         new_audioroutine = AudioRoutine(r_id=new_routine.r_id, a_id=audiofile.a_id)
         db.session.add(new_audioroutine)
@@ -71,7 +72,11 @@ def select_routine():
 @app.route('/play_routine/<int:r_id>')
 def play_routine(r_id):
     """Plays the user's routine."""
-    # # query the audio_routines table using that r_id, get the a_id 
+    # # query the audio_routines table using that r_id, get the a_id
+
+    # routine = Routine.query.get(r_id) 
+    # audiofiles = routine.audio_files
+    
     audio_ids = AudioRoutine.query.filter_by(r_id=r_id).all()
     audio_stuff = []
     for row in audio_ids:
@@ -82,7 +87,7 @@ def play_routine(r_id):
     for i in audio_stuff:
         audiofiles.append(AudioFile.query.filter_by(a_id=i).one())
 
-    return render_template("play_routine.html",audiofiles=audiofiles)
+    return render_template("play_routine.html", audiofiles=audiofiles)
 
 
 
