@@ -89,6 +89,13 @@ def play_routine(r_id):
 
     return render_template("play_routine.html", audiofiles=audiofiles)
 
+@app.route('/tuner')
+def tuner():
+    """Presents the tuner to the user."""
+
+
+    return render_template("tuner.html")
+
 
 
 if __name__ == "__main__":
