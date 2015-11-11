@@ -342,7 +342,6 @@ function updatePitch( time ) {
 		waveCanvas.stroke();
 	}
 
-    myNote="a note";
     
  	if (ac == -1) {
  		detectorElem.className = "vague";
@@ -356,7 +355,6 @@ function updatePitch( time ) {
 	 	pitchElem.innerText = Math.round( pitch ) ;
 	 	var note =  noteFromPitch( pitch );
 		noteElem.innerHTML = noteStrings[note%12];
-        myNote=noteElem.innerHTML;
 		var detune = centsOffFromPitch( pitch, note );
 		if (detune == 0 ) {
 			detuneElem.className = "";
@@ -373,5 +371,4 @@ function updatePitch( time ) {
 	if (!window.requestAnimationFrame)
 		window.requestAnimationFrame = window.webkitRequestAnimationFrame;
 	rafID = window.requestAnimationFrame( updatePitch );
-    return myNote;
 }
