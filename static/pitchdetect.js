@@ -313,7 +313,6 @@ function autoCorrelate( buf, sampleRate ) {
 }
 
 function updatePitch( time ) {
-    alert("made it to update pitch");
 	var cycles = new Array;
 	analyser.getFloatTimeDomainData( buf );
 	var ac = autoCorrelate( buf, audioContext.sampleRate ); 
