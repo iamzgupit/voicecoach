@@ -9,21 +9,7 @@ function playTargetNote(){
     targetAudio.play();
     setTimeout(function(){
         toggleLiveInput();
-        myNote = $("#note").html();
-        if (myNote != "--" && myNote != "-"){
-            if (myNote===targetNote){
-                alert("yay");
-            } else {
-                alert("no");
-            }
-        }
    },700
    );
 
-
-
-
-
-
-}
-
+} 
