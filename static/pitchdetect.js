@@ -313,6 +313,7 @@ function autoCorrelate( buf, sampleRate ) {
 }
 
 function updatePitch( time ) {
+    alert("made it to update pitch");
 	var cycles = new Array;
 	analyser.getFloatTimeDomainData( buf );
 	var ac = autoCorrelate( buf, audioContext.sampleRate ); 
@@ -373,6 +374,5 @@ function updatePitch( time ) {
 	if (!window.requestAnimationFrame)
 		window.requestAnimationFrame = window.webkitRequestAnimationFrame;
 	rafID = window.requestAnimationFrame( updatePitch );
-
     return myNote;
 }
