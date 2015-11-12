@@ -2,7 +2,7 @@
 
 
 var targetNote="C";
-var targetAudio = new Audio("../static/c_note.ogg");
+var targetAudio = new Audio("../static/lower_c.ogg");
 
 function playTargetNote(){
     targetAudio.play();

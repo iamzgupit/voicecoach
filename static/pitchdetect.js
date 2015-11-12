@@ -373,7 +373,7 @@ function updatePitch( time ) {
 	 	pitchElem.innerText = Math.round( pitch ) ;
 	 	var note =  noteFromPitch( pitch );
         var noteString = noteStrings[note%12];
-        if (listening = true){
+        if (listening === true){
             checkNote(noteString);
         }
 		noteElem.innerHTML = noteString;
