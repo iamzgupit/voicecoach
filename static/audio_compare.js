@@ -3,7 +3,6 @@
 
 var targetNote="A";
 var targetAudio = new Audio("../static/c_note.ogg");
-var userNote=[];
 
 function playTargetNote(){
     targetAudio.play();
@@ -12,4 +11,4 @@ function playTargetNote(){
    },700
    );
 
-} 
+}

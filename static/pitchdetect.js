@@ -354,10 +354,14 @@ function updatePitch( time ) {
 	 	pitch = ac;
 	 	pitchElem.innerText = Math.round( pitch ) ;
 	 	var note =  noteFromPitch( pitch );
-        console.log("note: " + note);
         var noteString = noteStrings[note%12];
-        console.log("noteString: " + noteString);
 		noteElem.innerHTML = noteString;
+        console.log("noteString: " + noteString);
+        if (noteString===targetNote){
+            alert("you hit it!");
+        } else {
+            alert("missed it");
+        }
 		var detune = centsOffFromPitch( pitch, note );
 		if (detune == 0 ) {
 			detuneElem.className = "";
