@@ -206,6 +206,9 @@ var buf = new Float32Array( buflen );
 
 var noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
+notes=[];
+listening=true;
+
 function noteFromPitch( frequency ) {
 	var noteNum = 12 * (Math.log( frequency / 440 )/Math.log(2) );
 	return Math.round( noteNum ) + 69;
@@ -312,6 +315,21 @@ function autoCorrelate( buf, sampleRate ) {
 //	var best_frequency = sampleRate/best_offset;
 }
 
+function checkNote(noteString){
+    if (notes.length<16){
+        notes.push(noteString);
+        console.log(notes);
+    } else {
+        if (notes.indexOf(targetNote) > -1 ){
+            alert("yay");
+            listening=false;
+        } else {
+            alert("no");
+            listening=false;
+        }
+    }
+}
+
 function updatePitch( time ) {
 	var cycles = new Array;
 	analyser.getFloatTimeDomainData( buf );
@@ -355,13 +373,11 @@ function updatePitch( time ) {
 	 	pitchElem.innerText = Math.round( pitch ) ;
 	 	var note =  noteFromPitch( pitch );
         var noteString = noteStrings[note%12];
+        if (listening = true){
+            checkNote(noteString);
+        }
 		noteElem.innerHTML = noteString;
         console.log("noteString: " + noteString);
-        if (noteString===targetNote){
-            alert("you hit it!");
-        } else {
-            alert("missed it");
-        }
 		var detune = centsOffFromPitch( pitch, note );
 		if (detune == 0 ) {
 			detuneElem.className = "";
