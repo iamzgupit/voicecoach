@@ -146,6 +146,7 @@ function toggleOscillator() {
 }
 
 function toggleLiveInput() {
+    userCount+=1;
     if (isPlaying) {
         //stop playing and return
         sourceNode.stop( 0 );
@@ -195,7 +196,7 @@ function togglePlayback() {
     isPlaying = true;
     isLiveInput = false;
     updatePitch();
-
+    targetNotes=notes;
     return "stop";
 }
 
@@ -207,6 +208,9 @@ var buf = new Float32Array( buflen );
 var noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
 notes=[];
+missedNotes=[];
+accuracy=0;
+userCount=0;
 listening=true;
 
 function noteFromPitch( frequency ) {
@@ -315,11 +319,25 @@ function autoCorrelate( buf, sampleRate ) {
 //	var best_frequency = sampleRate/best_offset;
 }
 
+function calculateAccuracy(){
+    for (i=0;i<notes.length;i++){
+        if(notes[i] !== targetNotes[i]){
+            missedNotes.push(notes[i]);
+        }
+    }
+    accuracy = ((missedNotes.length/targetNotes.length)*100);
+    console.log(accuracy);
+    userCount=0;
+}
+
 function checkNote(noteString){
     if (notes.length<366){
         notes.push(noteString);
         console.log(notes);
     } else {
+        if (userCount>1){
+            calculateAccuracy();
+        } 
         if (notes.indexOf(targetNote) > -1 ){
             alert("yay");
             listening=false;
@@ -327,6 +345,7 @@ function checkNote(noteString){
             alert("no");
             listening=false;
         }
+        notes=[];
     }
 }
 
@@ -377,7 +396,6 @@ function updatePitch( time ) {
             checkNote(noteString);
         }
 		noteElem.innerHTML = noteString;
-        console.log("noteString: " + noteString);
 		var detune = centsOffFromPitch( pitch, note );
 		if (detune == 0 ) {
 			detuneElem.className = "";
