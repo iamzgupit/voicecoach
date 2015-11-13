@@ -25,10 +25,12 @@
         <script src="../static/audio_compare.js"></script>
             <script src="http://code.jquery.com/jquery.js"></script>
         <p>
-            <button onclick="this.innerText = togglePlayback()">use demo audio</button>
+            <!-- listen -->
+            <button onclick="this.innerText = togglePlayback()">listen</button>
+            <!-- match -->
+            <button onclick="toggleLiveInput()">ready to match</button>
             <button onclick="toggleLiveInput()">use live input</button>
             <button onclick="toggleOscillator()">use oscillator</button>
-            <button onclick="playTargetNote()">match note</button>
             <!--<button onclick="updatePitch(0);">sample</button>-->
         </p>
 

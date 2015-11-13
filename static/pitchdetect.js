@@ -43,7 +43,7 @@ window.onload = function() {
 	audioContext = new AudioContext();
 	MAX_SIZE = Math.max(4,Math.floor(audioContext.sampleRate/5000));	// corresponds to a 5kHz signal
 	var request = new XMLHttpRequest();
-	request.open("GET", "../static/whistling3.ogg", true);
+	request.open("GET", "../static/mariah_sample.ogg", true);
 	request.responseType = "arraybuffer";
 	request.onload = function() {
 	  audioContext.decodeAudioData( request.response, function(buffer) { 
@@ -185,7 +185,7 @@ function togglePlayback() {
 
     sourceNode = audioContext.createBufferSource();
     sourceNode.buffer= theBuffer;
-    sourceNode.loop = true;
+    sourceNode.loop = false;
 
     analyser = audioContext.createAnalyser();
     analyser.fftSize = 2048;
@@ -316,7 +316,7 @@ function autoCorrelate( buf, sampleRate ) {
 }
 
 function checkNote(noteString){
-    if (notes.length<16){
+    if (notes.length<366){
         notes.push(noteString);
         console.log(notes);
     } else {

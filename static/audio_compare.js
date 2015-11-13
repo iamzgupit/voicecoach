@@ -2,13 +2,10 @@
 
 
 var targetNote="C";
-var targetAudio = new Audio("../static/lower_c.ogg");
+var targetAudio = new Audio("../static/mariah_sample.ogg");
 
 function playTargetNote(){
     targetAudio.play();
-    setTimeout(function(){
-        toggleLiveInput();
-   },700
    );
 
 }
