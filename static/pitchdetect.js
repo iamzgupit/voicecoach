@@ -52,6 +52,11 @@ window.onload = function() {
 	}
 	request.send();
 
+    myturn = document.getElementById( "myturn" );
+    myturn.onclick = function(){
+        listening=true;
+        alert("i just changed listening to true for you");
+    }
 	detectorElem = document.getElementById( "detector" );
 	canvasElem = document.getElementById( "output" );
 	DEBUGCANVAS = document.getElementById( "waveform" );
@@ -196,7 +201,6 @@ function togglePlayback() {
     isPlaying = true;
     isLiveInput = false;
     updatePitch();
-    targetNotes=notes;
     return "stop";
 }
 
@@ -208,6 +212,7 @@ var buf = new Float32Array( buflen );
 var noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
 notes=[];
+targetNotes=[];
 missedNotes=[];
 accuracy=0;
 userCount=0;
@@ -325,8 +330,9 @@ function calculateAccuracy(){
             missedNotes.push(notes[i]);
         }
     }
-    accuracy = ((missedNotes.length/targetNotes.length)*100);
-    console.log(accuracy);
+    accuracy = ((1-(missedNotes.length/targetNotes.length))*100);
+    console.log(accuracy+"%");
+    listening=false;
     userCount=0;
 }
 
@@ -335,17 +341,14 @@ function checkNote(noteString){
         notes.push(noteString);
         console.log(notes);
     } else {
+        listening=false;
         if (userCount>1){
             calculateAccuracy();
-        } 
-        if (notes.indexOf(targetNote) > -1 ){
-            alert("yay");
-            listening=false;
         } else {
-            alert("no");
-            listening=false;
+            targetNotes=notes;
         }
         notes=[];
+        console.log("okaynow"+targetNotes+"    I am targetNotes after notes has been set to []")
     }
 }
 
@@ -393,6 +396,7 @@ function updatePitch( time ) {
 	 	var note =  noteFromPitch( pitch );
         var noteString = noteStrings[note%12];
         if (listening === true){
+            console.log(notes+"I AM NOTES");
             checkNote(noteString);
         }
 		noteElem.innerHTML = noteString;
