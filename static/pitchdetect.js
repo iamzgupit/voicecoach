@@ -52,11 +52,6 @@ window.onload = function() {
 	}
 	request.send();
 
-    myturn = document.getElementById( "myturn" );
-    myturn.onclick = function(){
-        listening=true;
-        alert("i just changed listening to true for you");
-    }
 	detectorElem = document.getElementById( "detector" );
 	canvasElem = document.getElementById( "output" );
 	DEBUGCANVAS = document.getElementById( "waveform" );
@@ -324,6 +319,10 @@ function autoCorrelate( buf, sampleRate ) {
 //	var best_frequency = sampleRate/best_offset;
 }
 
+function myturn(){
+    listening=true;
+} 
+
 function calculateAccuracy(){
     for (i=0;i<notes.length;i++){
         if(notes[i] !== targetNotes[i]){
@@ -339,16 +338,15 @@ function calculateAccuracy(){
 function checkNote(noteString){
     if (notes.length<366){
         notes.push(noteString);
-        console.log(notes);
     } else {
         listening=false;
-        if (userCount>1){
+        if (userCount>0){
+            alert("entering calculateAccuracy()");
             calculateAccuracy();
         } else {
             targetNotes=notes;
         }
         notes=[];
-        console.log("okaynow"+targetNotes+"    I am targetNotes after notes has been set to []")
     }
 }
 
@@ -396,7 +394,6 @@ function updatePitch( time ) {
 	 	var note =  noteFromPitch( pitch );
         var noteString = noteStrings[note%12];
         if (listening === true){
-            console.log(notes+"I AM NOTES");
             checkNote(noteString);
         }
 		noteElem.innerHTML = noteString;
