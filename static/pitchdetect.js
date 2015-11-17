@@ -207,6 +207,7 @@ var buf = new Float32Array( buflen );
 var noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
 notes=[];
+displayed=[];
 targetNotes=[];
 missedNotes=[];
 accuracy=0;
@@ -336,8 +337,16 @@ function calculateAccuracy(){
 }
 
 function checkNote(noteString){
-    if (notes.length<366){
+    if (notes.length<300){
+        // 
         notes.push(noteString);
+        // if the two or more of the previous items in notes were noteString
+        if (notes[notes.length-2] === noteString){
+            displayed.push(noteString);
+            console.log(displayed);
+            noteElem.innerHTML = noteString;
+         //then set the innerHTML to noteString
+            } 
     } else {
         listening=false;
         if (userCount>0){
@@ -354,7 +363,6 @@ function updatePitch( time ) {
 	var cycles = new Array;
 	analyser.getFloatTimeDomainData( buf );
 	var ac = autoCorrelate( buf, audioContext.sampleRate ); 
-	// TODO: Paint confidence meter on canvasElem here.
 
 	if (DEBUGCANVAS) {  // This draws the current waveform, useful for debugging
 		waveCanvas.clearRect(0,0,512,256);
@@ -396,7 +404,6 @@ function updatePitch( time ) {
         if (listening === true){
             checkNote(noteString);
         }
-		noteElem.innerHTML = noteString;
 		var detune = centsOffFromPitch( pitch, note );
 		if (detune == 0 ) {
 			detuneElem.className = "";
