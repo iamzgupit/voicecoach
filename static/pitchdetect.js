@@ -39,21 +39,22 @@ var detectorElem,
 	detuneElem,
 	detuneAmount;
 
-notes=[];
-displayed=[];
-targetNotes=[];
-missedNotes=[];
-accuracy=0;
-userCount=0;
-listening=true;
-
+var notes=[],
+displayed=[],
+targetNotes=[],
+missedNotes=[],
+accuracy=0,
+userCount=0,
+listening=true,
+targetNoteNum=300,
+pathToSong="../static/mariah_sample.ogg";
 
 
 window.onload = function() {
 	audioContext = new AudioContext();
 	MAX_SIZE = Math.max(4,Math.floor(audioContext.sampleRate/5000));	// corresponds to a 5kHz signal
 	var request = new XMLHttpRequest();
-	request.open("GET", "../static/new_recording_2.ogg", true);
+	request.open("GET", pathToSong, true);
 	request.responseType = "arraybuffer";
 	request.onload = function() {
 	  audioContext.decodeAudioData( request.response, function(buffer) { 
@@ -333,14 +334,14 @@ function calculateAccuracy(){
             missedNotes.push(notes[i]);
         }
     }
-    accuracy = ((1-(missedNotes.length/targetNotes.length))*100);
+    accuracy = ((1-(missedNotes.length/targetNotes.length))*100)+20;
     console.log(accuracy+"%");
     listening=false;
     userCount=0;
 }
 
 function checkNote(noteString){
-    if (notes.length<185){
+    if (notes.length<targetNoteNum){
         // 
         notes.push(noteString);
         // if the two or more of the previous items in notes were noteString
