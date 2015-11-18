@@ -39,11 +39,21 @@ var detectorElem,
 	detuneElem,
 	detuneAmount;
 
+notes=[];
+displayed=[];
+targetNotes=[];
+missedNotes=[];
+accuracy=0;
+userCount=0;
+listening=true;
+
+
+
 window.onload = function() {
 	audioContext = new AudioContext();
 	MAX_SIZE = Math.max(4,Math.floor(audioContext.sampleRate/5000));	// corresponds to a 5kHz signal
 	var request = new XMLHttpRequest();
-	request.open("GET", "../static/mariah_sample.ogg", true);
+	request.open("GET", "../static/new_recording_2.ogg", true);
 	request.responseType = "arraybuffer";
 	request.onload = function() {
 	  audioContext.decodeAudioData( request.response, function(buffer) { 
@@ -147,6 +157,7 @@ function toggleOscillator() {
 
 function toggleLiveInput() {
     userCount+=1;
+    notes=[];
     if (isPlaying) {
         //stop playing and return
         sourceNode.stop( 0 );
@@ -205,14 +216,6 @@ var buflen = 1024;
 var buf = new Float32Array( buflen );
 
 var noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-
-notes=[];
-displayed=[];
-targetNotes=[];
-missedNotes=[];
-accuracy=0;
-userCount=0;
-listening=true;
 
 function noteFromPitch( frequency ) {
 	var noteNum = 12 * (Math.log( frequency / 440 )/Math.log(2) );
@@ -337,7 +340,7 @@ function calculateAccuracy(){
 }
 
 function checkNote(noteString){
-    if (notes.length<300){
+    if (notes.length<185){
         // 
         notes.push(noteString);
         // if the two or more of the previous items in notes were noteString
@@ -355,7 +358,6 @@ function checkNote(noteString){
         } else {
             targetNotes=notes;
         }
-        notes=[];
     }
 }
 
