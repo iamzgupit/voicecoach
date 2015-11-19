@@ -46,8 +46,8 @@ missedNotes=[],
 accuracy=0,
 userCount=0,
 listening=true,
-targetNoteNum=300,
-pathToSong="../static/mariah_sample.ogg";
+targetNoteNum=168,
+pathToSong="../static/new_recording_2.ogg";
 
 
 window.onload = function() {
@@ -159,6 +159,7 @@ function toggleOscillator() {
 function toggleLiveInput() {
     userCount+=1;
     notes=[];
+    listening=true;
     if (isPlaying) {
         //stop playing and return
         sourceNode.stop( 0 );
@@ -324,9 +325,13 @@ function autoCorrelate( buf, sampleRate ) {
 //	var best_frequency = sampleRate/best_offset;
 }
 
-function myturn(){
-    listening=true;
-} 
+function doChallenge(){
+    console.log("you're doing challenge");
+    targetNoteNum=290;
+    pathToSong="../static/mariah_sample.ogg";
+}
+
+$('#challenge-button').on('click', doChallenge);
 
 function calculateAccuracy(){
     for (i=0;i<notes.length;i++){
