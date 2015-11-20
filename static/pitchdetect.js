@@ -50,7 +50,7 @@ targetNoteNum=168,
 pathToSong="../static/new_recording_2.ogg";
 
 
-window.onload = function() {
+function loadSong() {
 	audioContext = new AudioContext();
 	MAX_SIZE = Math.max(4,Math.floor(audioContext.sampleRate/5000));	// corresponds to a 5kHz signal
 	var request = new XMLHttpRequest();
@@ -99,9 +99,8 @@ window.onload = function() {
 	  	return false;
 	};
 
-
-
 }
+// this closes the onload function for the song
 
 function error() {
     alert('Stream generation failed.');
@@ -325,13 +324,35 @@ function autoCorrelate( buf, sampleRate ) {
 //	var best_frequency = sampleRate/best_offset;
 }
 
+function tunerShow(){
+    $("#level_buttons").css("display","none");
+    $("#tuner_stuff").css("display", "block");
+}
+
+
+// when you click on easy, call the function to make tuner_stuff show
+$("#easy-button").on('click', function(){ 
+    doEasy();
+    tunerShow();
+});
+
+// when you click on challenge, call the function to make tuner_stuff show
+$('#challenge-button').on('click', function(){
+    doChallenge();
+    tunerShow();
+});
+
 function doChallenge(){
     console.log("you're doing challenge");
     targetNoteNum=290;
     pathToSong="../static/mariah_sample.ogg";
+    loadSong();
 }
 
-$('#challenge-button').on('click', doChallenge);
+function doEasy(){
+    console.log("you're doing easy");
+    loadSong();
+}
 
 function calculateAccuracy(){
     for (i=0;i<notes.length;i++){

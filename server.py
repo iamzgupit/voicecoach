@@ -89,19 +89,9 @@ def play_routine(r_id):
 
     return render_template("play_routine.html", audiofiles=audiofiles)
 
-@app.route('/choose_tuner')
-def choose_tuner():
-    """gives user the option to choose an easy or challenge tuner exercise."""
-
-
-    return render_template("choose_tuner.html")
-
 @app.route('/tuner')
 def tuner():
     """Presents the tuner to the user."""
-    print("you're doing challenge")
-    targetNoteNum=290
-    pathToSong="../static/mariah_sample.ogg"
 
     return render_template("tuner.html")
 
