@@ -93,17 +93,13 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-<!-- button to set a new routine -->
-<form action="/routine_builder">
-    <input type="submit" value="set a new routine">
-</form>
-<!-- button to play a routine -->
-<form action="/routine_displayer">
-    <input type="submit" value="play a saved routine">
+<!-- button to practice using a routine -->
+<form action="/practice_selection">
+    <input type="submit" value="practice">
 </form>
 <!-- button to tune your voice-->
 <form action="/tuner">
-    <input type="submit" value="tune your voice">
+    <input type="submit" value="how's my pitch?">
 </form>
 <div id="extending">
     {% for flash in get_flashed_messages() %}

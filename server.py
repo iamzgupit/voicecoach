@@ -24,6 +24,12 @@ def index():
 
     return render_template("home.html")
 
+@app.route('/practice_selection')
+def practice_selection():
+    """Invites the user to choose either choose from saved routines or to create a new routine."""
+
+    return render_template("practice_selection.html")
+
 @app.route('/routine_builder')
 def routine_builder():
     """Allows the user to build their routine of scales and instruction files."""
@@ -107,9 +113,6 @@ if __name__ == "__main__":
     connect_to_db(app)
 
     # Use the DebugToolbar
-    DebugToolbarExtension(app)
+    # DebugToolbarExtension(app)
 
     app.run()
-
-
-
