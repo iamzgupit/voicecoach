@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>routine builder</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}
+routine builder
+{% endblock %}
+
+{% block content %}
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.15.min.js"></script>
       
 <form action="/routine_adder" method="get">
@@ -44,6 +45,4 @@ and the name of the routine
 enter that new row into the database -->
   <input type="submit" value="Submit">
 </form>
-
-</body>
-</html>
+{% endblock %}

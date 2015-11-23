@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>routine selector</title>
-</head>
-<body>
-<script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.15.min.js"></script>
-    <div class="well spaced" style="width:50%;">
-  <h2>ROUTINE SELECTOR</h2>
+{% extends "base.html" %}
+
+{% block title %}
+routine selector
+{% endblock %}
+
+{% block content %}
   <ul>
   {% for routine in routines %}
     <li>
@@ -15,9 +13,7 @@
   {% endfor %}
   </ul>
 
-</div>
+{% endblock %}
 
-</body>
-</html>
 
 

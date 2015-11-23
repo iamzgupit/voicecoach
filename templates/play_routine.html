@@ -1,67 +1,60 @@
- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-  <title>player</title>
-  <link href="../static/text-player.css" type="text/css" rel="stylesheet" />
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}
+voicecoach
+{% endblock %}
+{% block content %}
+<link href="../static/text-player.css" type="text/css" rel="stylesheet" />
 <h2>Voicecoach Player</h2>
 <form action="/">
    <input type="submit" value="go home">
 </form>
-
-  <!-- PLAYER WILL LOOK FOR AUDIO LINKS ONLY INSIDE .PT-PLAYLIST -->
-  <div class="pt-playlist">
-    <!-- CONTROLS MARKUP DYNAMICALLY ADDED TO THE TOP OF .PT-PLAYLIST. -->    
-    <ul class="links">
-        {% for file in audiofiles %}
-      <li><a href="../static/{{file.name}}.mp3" class="pt-audio">{{file.name}}</a></li> 
-        {% endfor %}
-    </ul>
-  </div>
-
-  <script type="text/javascript" src="../static/sm2_files/script/soundmanager2-jsmin.js"></script>
-  <script type="text/javascript" src="../static/pushtape-player.js"></script>
-  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.15.min.js"></script>
-  <script type="text/javascript">
-  /**
-   * Setup the Pushtape Player
-   adapted from code written by zirafa for the pushtape project 
-   https://github.com/zirafa/pushtape-player.js
-   */
-  var pushtapePlayer = null; // Instance
-  
-  soundManager.setup({
-    debugMode: true,   // disable or enable debug output
-    url: '../static/sm2_files',       // path to directory containing SM2 SWF
-    useHighPerformance: true, // keep flash on screen, boost performance
-    preferFlash: true, // for visualization effects (smoother scrubber)
-    flashVersion: 9,
-    wmode: 'transparent', // transparent SWF, if possible
-    onready: function() {
-      // Initialize pushtape player when SM2 is ready
-      pushtapePlayer = new PushtapePlayer();
-      pushtapePlayer.init({
-        playNext: true, // stop after one sound, or play through list until end
-        autoPlay: true,  // start playing the first sound right away
-        repeatAll: false, // repeat playlist after last track
-        containerClass : 'pt-playlist', // If empty, we will scan *all* links on the page. If set, limits the scope of search inside containerClass
-        linkClass : '', // By default, add all links we find. If set, will only add links with this class 
-        addControlsMarkup: {
-          'enabled' : true, 
-          'controlsMarkupClass' :'pt-controls-wrapper',
-          'position' : 'top'
-        } // if enabled =  false you provide all markup in your HTML, otherwise set this to true and it will be dynamically inserted into controlsContainerClass.
-      });
-    },
-    ontimeout: function() {
-      // Could not start. Missing SWF? Flash blocked? Show an error, etc.?
-      console.log('Error initializing the Pushtape player.');
-    }  
-  });
-  
-  </script>
-
-</body>
-</html>
+<!-- PLAYER WILL LOOK FOR AUDIO LINKS ONLY INSIDE .PT-PLAYLIST -->
+<div class="pt-playlist">
+   <!-- CONTROLS MARKUP DYNAMICALLY ADDED TO THE TOP OF .PT-PLAYLIST. -->    
+   <ul class="links">
+      {% for file in audiofiles %}
+      <li><a href="../static/{{file.name}}.mp3" class="pt-audio">{{file.name}}</a></li>
+      {% endfor %}
+   </ul>
+</div>
+<script type="text/javascript" src="../static/sm2_files/script/soundmanager2-jsmin.js"></script>
+<script type="text/javascript" src="../static/pushtape-player.js"></script>
+<script type="text/javascript">
+   /**
+    * Setup the Pushtape Player
+    adapted from code written by zirafa for the pushtape project 
+    https://github.com/zirafa/pushtape-player.js
+    */
+   var pushtapePlayer = null; // Instance
+   
+   soundManager.setup({
+     debugMode: true,   // disable or enable debug output
+     url: '../static/sm2_files',       // path to directory containing SM2 SWF
+     useHighPerformance: true, // keep flash on screen, boost performance
+     preferFlash: true, // for visualization effects (smoother scrubber)
+     flashVersion: 9,
+     wmode: 'transparent', // transparent SWF, if possible
+     onready: function() {
+       // Initialize pushtape player when SM2 is ready
+       pushtapePlayer = new PushtapePlayer();
+       pushtapePlayer.init({
+         playNext: true, // stop after one sound, or play through list until end
+         autoPlay: true,  // start playing the first sound right away
+         repeatAll: false, // repeat playlist after last track
+         containerClass : 'pt-playlist', // If empty, we will scan *all* links on the page. If set, limits the scope of search inside containerClass
+         linkClass : '', // By default, add all links we find. If set, will only add links with this class 
+         addControlsMarkup: {
+           'enabled' : true, 
+           'controlsMarkupClass' :'pt-controls-wrapper',
+           'position' : 'top'
+         } // if enabled =  false you provide all markup in your HTML, otherwise set this to true and it will be dynamically inserted into controlsContainerClass.
+       });
+     },
+     ontimeout: function() {
+       // Could not start. Missing SWF? Flash blocked? Show an error, etc.?
+       console.log('Error initializing the Pushtape player.');
+     }  
+   });
+   
+</script>
+{% endblock %}
