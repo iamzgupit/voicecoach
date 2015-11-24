@@ -6,13 +6,17 @@ voicecoach
 
 {% block content %}
 <!-- button to practice using a routine -->
+</br>
+<div class="text-center">
 <form action="/practice_selection">
-    <input type="submit" value="practice">
+    <input class="btn btn-default" id="button1" type="submit" value="practice">
 </form>
+</br>
 <!-- button to tune your voice-->
 <form action="/tuner">
-    <input type="submit" value="how's my pitch?">
+    <input class="btn btn-default" id="button2" type="submit" value="how's my pitch?">
 </form>
+</div>
 <div id="extending">
     {% for flash in get_flashed_messages() %}
       <div class="alert alert-danger" style="width:90%; margin:0 auto;">{{ flash }}</div>
