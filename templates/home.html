@@ -6,6 +6,16 @@ voicecoach
 
 {% block content %}
 <!-- button to practice using a routine -->
+<div id="extending">
+    {% for flash in get_flashed_messages() %}
+      <div class="alert alert-danger" style="width:90%; margin:0 auto;">{{ flash }}</div>
+    {% endfor %}
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 </br>
 <div class="text-center">
 <form action="/practice_selection">
@@ -17,10 +27,13 @@ voicecoach
     <input class="btn btn-default" id="button1" type="submit" value="how's my pitch?">
 </form>
 </div>
-<div id="extending">
-    {% for flash in get_flashed_messages() %}
-      <div class="alert alert-danger" style="width:90%; margin:0 auto;">{{ flash }}</div>
-    {% endfor %}
-</div>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
 {% endblock %}
 
