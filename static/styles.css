@@ -1,20 +1,10 @@
-/*background blue*/
-
-/*body
+body
 {
     background-color: white;
     font: 14px 'Courier New';
-}*/
-
-#button1
-{
-    font-size: 14px;
-    font-family: 'Courier New';
-    -webkit-appearance: button;
-    -moz-appearance: button;
 }
 
-#button2
+#button1
 {
     font-size: 14px;
     font-family: 'Courier New';
