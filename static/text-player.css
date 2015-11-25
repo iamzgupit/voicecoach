@@ -11,7 +11,7 @@ a {
 }
 .pt-previous,
 .pt-next {
-  font-size:2.5em;
+  font-size:3.5em;
   float:right;
   margin-left:.5em;
 }
@@ -97,7 +97,7 @@ a {
 }
 .pt-time {
   float:right;
-  font-size:.7em;
+  font-size:1em;
 }
 .links {
   clear:both;
@@ -106,14 +106,13 @@ a {
   position:fixed;
   bottom:0;
   left:0;
-  width:96%;
+  width:100%;
   padding:1% 2%;
-  border-top:solid 1px #EEE;
-  background:rgba(0,0,0,.9);
-  color:#FFF;
+  background-color: rgba(234, 221, 223, 0.7);
 }
 .links a {
   float:left;
+  padding-left:30px;
 }
 .links a:hover {
   background:#FCFCFC;

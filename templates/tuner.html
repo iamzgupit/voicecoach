@@ -13,15 +13,15 @@ voicecoach
 </br>
       <div id="level_buttons">
          <p>
-            <button id="easy-button">easy</button>
-            <button id="challenge-button">challenge</button>
+            <button id="button1" class="btn btn-default easy-button good-button">easy</button>
+            <button id="button1" class="btn btn-default challenge-button good-button">challenge</button>
          </p>
       </div>
       <div id="tuner_stuff">
          <p>
-            <button onclick="this.innerText = togglePlayback()">listen</button>
+            <button class="btn btn-default easy-button good-button" onclick="this.innerText = togglePlayback()">listen</button>
             <!-- match -->
-            <button id="myturn" onclick="toggleLiveInput(); myturn();">my turn</button>
+            <button class="btn btn-default easy-button good-button" id="myturn" onclick="toggleLiveInput(); myturn();">my turn</button>
             <!--<button onclick="updatePitch(0);">sample</button>-->
          </p>
          <div id="detector" class="vague">

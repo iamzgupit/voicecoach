@@ -331,13 +331,13 @@ function tunerShow(){
 
 
 // when you click on easy, call the function to make tuner_stuff show
-$("#easy-button").on('click', function(){ 
+$(".easy-button").on('click', function(){ 
     doEasy();
     tunerShow();
 });
 
 // when you click on challenge, call the function to make tuner_stuff show
-$('#challenge-button').on('click', function(){
+$('.challenge-button').on('click', function(){
     doChallenge();
     tunerShow();
 });
