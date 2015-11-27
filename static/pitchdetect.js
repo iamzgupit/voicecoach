@@ -344,14 +344,12 @@ $('.challenge-button').on('click', function(){
 });
 
 function doChallenge(){
-    console.log("you're doing challenge");
     targetNoteNum=290;
     pathToSong="../static/mariah_sample.ogg";
     loadSong();
 }
 
 function doEasy(){
-    console.log("you're doing easy");
     loadSong();
 }
 
@@ -372,7 +370,7 @@ function calculateAccuracy(){
         else {
             notesRight="1/3";
         }
-            $("#index-alert").prepend("you got "+notesRight+" of the notes.");
+            $("#index-alert").prepend("you got about "+notesRight+" of the notes.");
             $(".accuracy").css("display", "block");
     }
     console.log(accuracy+"%");
@@ -387,7 +385,6 @@ function checkNote(noteString){
         // if the two or more of the previous items in notes were noteString
         if (notes[notes.length-2] === noteString){
             displayed.push(noteString);
-            console.log(displayed);
             noteElem.innerHTML = noteString;
          //then set the innerHTML to noteString
             } 
