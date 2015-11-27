@@ -1,6 +1,6 @@
 body
 {
-    font: 14px "open sans",'Courier New';
+    font: 14px 'Courier New';
     background-image: url("clouds2.jpg");
 }
 
@@ -12,8 +12,8 @@ body
 #button1
 {
     background-color: rgba(234, 221, 223, 0.4);
+    font-family: "Courier New";
     font-size: 14px;
-    font-family: 'Open Sans', sans-serif;
     -webkit-appearance: button;
     -moz-appearance: button;
 }
