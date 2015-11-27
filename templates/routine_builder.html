@@ -5,14 +5,16 @@ routine builder
 {% endblock %}
 
 {% block content %}
+<link href="../static/text-player.css" type="text/css" rel="stylesheet" />
+<link href="../static/styles.css" type="text/css" rel="stylesheet" />
 </br>
 </br>
 </br>
 </br>
 </br>
 <form action="/routine_adder" method="get">
-    Routine name: <input type="text" name="RoutineName"><br>
-    Need it serves: <input type="text" name="RoutineNeed"><br>
+    Routine name: <input type="text" class="form-control form-control2 good-button" name="RoutineName"><br>
+    Need it serves: <input type="text" class="form-control good-button" name="RoutineNeed"><br>
   </br>
   <input type="checkbox" name="audio_file" value="tiny_oo">tiny oo 
     </br>    <audio controls>
@@ -37,6 +39,8 @@ routine builder
   <!-- if the box is checked, create a new row with the associated value 
 and the name of the routine 
 enter that new row into the database -->
-  <input type="submit" value="Submit">
+</br>
+</br>
+  <input class="btn btn-default good-button" type="submit" value="Submit">
 </form>
 {% endblock %}

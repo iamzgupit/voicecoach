@@ -92,3 +92,15 @@ div.vague
     font-size: 14px;
     font-family: 'Courier New';
 }
+
+.form-control{
+    display:inline;
+    width:160px;
+    height:20px;
+}
+
+.form-control2{
+    display:inline;
+    width:177px;
+    height:20px;
+}

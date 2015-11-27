@@ -124,6 +124,15 @@ a {
   animation:  buffering 1.4s infinite;
 }
 
+.good_audio {
+  background: black;
+  height:30px; 
+  width: 300px;
+  border: none;
+  background-size: 50% 50%;
+  background-position: center;
+}
+
 /* Utility class to hide elements if no links found on page load */
 .pt-hide {
   display:none;

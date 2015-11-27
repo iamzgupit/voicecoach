@@ -11,28 +11,29 @@ voicecoach
 </br>
 </br>
 </br>
-<div class="text-center">
-      <div id="level_buttons">
-         <p>
+
+      <div class="text-center" id="level_buttons">
+          </br>
+          </br>
             <button id="button1" class="btn btn-default easy-button good-button">easy</button>
+            </br>
+            </br>
             <button id="button1" class="btn btn-default challenge-button good-button">challenge</button>
-         </p>
       </div>
-      <div id="tuner_stuff">
+      <div class="text-center" id="tuner_stuff">
          <p>
             <button class="btn btn-default easy-button good-button" onclick="this.innerText = togglePlayback()">listen</button>
             <!-- match -->
             <button class="btn btn-default easy-button good-button" id="myturn" onclick="toggleLiveInput();">my turn</button>
             <!--<button onclick="updatePitch(0);">sample</button>-->
          </p>
-         <div id="detector" class="vague">
-            <div class="pitch"><span id="pitch">--</span>Hz</div>
-            <div class="note"><span id="note">--</span></div>
-            <canvas id="output" width=300 height=42></canvas>
-            <div id="detune"><span id="detune_amt">--</span><span id="flat">cents &#9837;</span><span id="sharp">cents &#9839;</span></div>
+         <div id="detector" class="vague text-center">
+            <div class="pitch text-center"><span id="pitch">--</span>Hz</div>
+            <div class="note text-center"><span id="note">--</span></div>
+            <canvas id="output text-center" width=300 height=42></canvas>
+            <div id="detune text-center"><span id="detune_amt">--</span><span id="flat">cents &#9837;</span><span id="sharp">cents &#9839;</span></div>
          </div>
       </div>
-  </div>
       <!-- just used for debugging
          <canvas id="waveform" width="512" height="256"></canvas>
          -->
