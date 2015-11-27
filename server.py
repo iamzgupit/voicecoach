@@ -41,8 +41,8 @@ def add_routines():
     """add routine selected to routines table."""
  # add the routine name to the routines table 
     routine_name = request.args.get("RoutineName")
-    new_routine = Routine(name=routine_name, u_id=1)
-
+    routine_need = request.args.get("RoutineNeed")
+    new_routine = Routine(name=routine_name,need=routine_need, u_id=1)
     db.session.add(new_routine)
     db.session.commit()
 

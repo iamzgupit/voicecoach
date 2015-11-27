@@ -20,6 +20,7 @@ class Routine(db.Model):
 
     r_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(64), nullable=True)
+    need = db.Column(db.String(64), nullable=True)
     u_id = db.Column(db.Integer, db.ForeignKey('users.u_id'))
 
     user = db.relationship('User', backref=db.backref("routines"))
@@ -62,4 +63,5 @@ if __name__ == "__main__":
 
     from server import app
     connect_to_db(app)
-    print "Connected to DB.;;;;;;;;;;;;;;;;;;"
+    print "Connected to DB.;"
+    print "Connected to DB.;"

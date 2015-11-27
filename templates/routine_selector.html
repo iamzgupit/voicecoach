@@ -13,6 +13,7 @@ routine selector
   {% for routine in routines %}
     <li>
       <a href="/play_routine/{{routine.r_id}}">{{ routine.name }}</a>
+      {{  routine.need }}
     </li>
   {% endfor %}
   </ul>
