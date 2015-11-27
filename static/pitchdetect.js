@@ -48,6 +48,7 @@ userCount=0,
 listening=true,
 targetNoteNum=168,
 pathToSong="../static/new_recording_2.ogg";
+notesRight=0;
 
 
 function loadSong() {
@@ -362,6 +363,16 @@ function calculateAccuracy(){
     }
     accuracy = ((1-(missedNotes.length/targetNotes.length))*100)+20;
     if (accuracy !== 0){
+        if (accuracy > 60){
+            notesRight="3/3";
+        }
+        if (33 < accuracy < 60){
+            notesRight="2/3";
+        }
+        else {
+            notesRight="1/3";
+        }
+            $("#index-alert").prepend("you got "+notesRight+" of the notes.");
             $(".accuracy").css("display", "block");
     }
     console.log(accuracy+"%");
