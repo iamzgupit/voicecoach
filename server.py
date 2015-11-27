@@ -52,7 +52,7 @@ def add_routines():
         print "user selected audio file name: ", i
 # # add the associated a_id to the audio_routines table 
         # by getting the associated a_id from the audio_files table
-        audiofile = AudioFile.query.filter_by(name=i).first()
+        audiofile = AudioFile.query.filter_by(name=i).one()
         print "audiofile from db: ", audiofile
         # add the routines id to the audio_routines table too
         new_audioroutine = AudioRoutine(r_id=new_routine.r_id, a_id=audiofile.a_id)
