@@ -361,6 +361,9 @@ function calculateAccuracy(){
         }
     }
     accuracy = ((1-(missedNotes.length/targetNotes.length))*100)+20;
+    if (accuracy !== 0){
+            $(".accuracy").css("display", "block");
+    }
     console.log(accuracy+"%");
     listening=false;
     userCount=0;
