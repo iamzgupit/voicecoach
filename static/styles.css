@@ -28,6 +28,10 @@ body
     -moz-appearance: button;
 }
 
+#return-button{
+    display: none;
+}
+
 #note
 {
     font-size: 164px;

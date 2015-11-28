@@ -329,6 +329,16 @@ function tunerShow(){
     $("#tuner_stuff").css("display", "block");
 }
 
+$(".freeplay-button").on('click',function(){
+    targetNoteNum=1000;
+    doEasy();
+    $("#level_buttons").css("display","none");
+    $("#listen-button").css("display","none");
+    $("#myturn").css("display","none");
+    $("#return-button").css("display", "block");
+    $("#tuner_stuff").css("display", "block");
+    toggleLiveInput();
+});
 
 // when you click on easy, call the function to make tuner_stuff show
 $(".easy-button").on('click', function(){ 
@@ -341,11 +351,6 @@ $('.challenge-button').on('click', function(){
     doChallenge();
     tunerShow();
 });
-
-function freeplaychange(){
-    targetNoteNum=1000;
-    toggleLiveInput();
-}
 
 function doChallenge(){
     targetNoteNum=290;
