@@ -7,6 +7,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db, User, AudioFile, Routine, AudioRoutine
 
+import os
 
 app = Flask(__name__)
 
@@ -114,7 +115,11 @@ if __name__ == "__main__":
     # that we invoke the DebugToolbarExtension
 
     # Do not debug for demo
-    app.debug = True
+    # app.debug = True
+
+    PORT = int(os.environ.get("PORT", 5000))
+
+    app.run(debug=True, host="0.0.0.0", port=PORT)
 
     connect_to_db(app)
 
