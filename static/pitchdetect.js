@@ -402,7 +402,6 @@ function checkNote(noteString){
     } else {
         listening=false;
         if (userCount>0 && targetNotes!=0){
-            alert("entering calculateAccuracy()");
             calculateAccuracy();
         } else {
             targetNotes=notes;
