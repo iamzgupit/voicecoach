@@ -343,7 +343,6 @@ $('.challenge-button').on('click', function(){
 });
 
 function freeplaychange(){
-    alert("entered freeplaychange");
     targetNoteNum=1000;
     toggleLiveInput();
 }

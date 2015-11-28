@@ -10,28 +10,30 @@ voicecoach
 </br>
 </br>
 </br>
-</br>
 <div class="text-center">
       <div id="level_buttons">
          <p>
-            <button id="button1" class="btn btn-default easy-button good-button">free play</button>
-            <button id="button1" class="btn btn-default challenge-button good-button">matcher</button>
+          </br>
+</br>
+</br>
+            <button id="button1" class="btn btn-default easy-button good-button">play</button>
+          <form action="/tuner">
+            <input class="btn btn-default good-button" id="button1" type="submit" value="match">
+          </form>
          </p>
       </div>
       <div id="tuner_stuff">
-         <p>
             <button class="btn btn-default easy-button good-button" id="myturn" onclick="freeplaychange();">play</button>
-            <!--<button onclick="updatePitch(0);">sample</button>-->
-         </p>
+            <form action="/tuner">
+            <input class="btn btn-default good-button" id="button1" type="submit" value="match">
+            </form>
          <div id="detector" class="container vague">
             <div class="pitch"><span id="pitch">--</span>Hz</div>
             <div class="note"><span id="note">--</span></div>
             <canvas id="output" width=300 height=42></canvas>
             <div id="detune"><span id="detune_amt">--</span><span id="flat">cents &#9837;</span><span id="sharp">cents &#9839;</span></div>
          </div>
-          <form action="/tuner">
-            <input class="btn btn-default good-button" id="button1" type="submit" value="matcher">
-          </form>
+                   </br>
       </div>
       <!-- bootstrap alert that only shows up when there's a value for calculateAccuracy-->
       <div id="index-alert" class="alert alert-info accuracy alert-dismissible" role="alert">
