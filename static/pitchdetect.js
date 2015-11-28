@@ -367,8 +367,10 @@ function calculateAccuracy(){
         if (33 < accuracy < 60){
             notesRight="2/3";
         }
-        else {
+        if (15 <accuracy < 33) {
             notesRight="1/3";
+        } else{
+            notesRight="0";
         }
             $("#index-alert").prepend("you got about "+notesRight+" of the notes.");
             $(".accuracy").css("display", "block");
@@ -430,13 +432,13 @@ function updatePitch( time ) {
 
     
  	if (ac == -1) {
- 		detectorElem.className = "vague";
+ 		detectorElem.className = "container vague";
 	 	pitchElem.innerText = "--";
 		noteElem.innerText = "-";
 		detuneElem.className = "";
 		detuneAmount.innerText = "--";
  	} else {
-	 	detectorElem.className = "confident";
+	 	detectorElem.className = "container confident";
 	 	pitch = ac;
 	 	pitchElem.innerText = Math.round( pitch ) ;
 	 	var note =  noteFromPitch( pitch );
