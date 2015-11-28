@@ -342,6 +342,12 @@ $('.challenge-button').on('click', function(){
     tunerShow();
 });
 
+function freeplaychange(){
+    alert("entered freeplaychange");
+    targetNoteNum=1000;
+    toggleLiveInput();
+}
+
 function doChallenge(){
     targetNoteNum=290;
     pathToSong="../static/mariah_sample.ogg";
