@@ -41,7 +41,7 @@ var detectorElem,
 
 var notes=[],
 displayed=[],
-targetNotes=[],
+targetNotes=0,
 missedNotes=[],
 accuracy=0,
 userCount=0,
@@ -49,7 +49,6 @@ listening=true,
 targetNoteNum=168,
 pathToSong="../static/new_recording_2.ogg";
 notesRight=0;
-
 
 function loadSong() {
 	audioContext = new AudioContext();
@@ -361,15 +360,20 @@ function calculateAccuracy(){
     }
     accuracy = ((1-(missedNotes.length/targetNotes.length))*100)+20;
     if (accuracy !== 0){
-        if (accuracy > 60){
+        console.log(accuracy);
+        if (accuracy > 75){
             notesRight="3/3";
         }
-        if (33 < accuracy < 60){
+        else if (55 < accuracy && accuracy < 75){
             notesRight="2/3";
         }
-        if (15 <accuracy < 33) {
+        else if (35 < accuracy && accuracy < 55) {
+            notesRight="1/2";
+        } 
+        else if (15 < accuracy && accuracy < 35) {
             notesRight="1/3";
-        } else{
+        } 
+        else {
             notesRight="0";
         }
             $("#index-alert").prepend("you got about "+notesRight+" of the notes.");
@@ -392,7 +396,7 @@ function checkNote(noteString){
             } 
     } else {
         listening=false;
-        if (userCount>0){
+        if (userCount>0 && targetNotes!=0){
             alert("entering calculateAccuracy()");
             calculateAccuracy();
         } else {
