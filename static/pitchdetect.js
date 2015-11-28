@@ -330,6 +330,7 @@ function tunerShow(){
 }
 
 $(".freeplay-button").on('click',function(){
+    console.log("you entered freeplay");
     targetNoteNum=1000;
     doEasy();
     $("#level_buttons").css("display","none");
