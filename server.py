@@ -1,4 +1,4 @@
-"""Voice Coach."""
+"""VoiceCoach."""
 
 from jinja2 import StrictUndefined
 
