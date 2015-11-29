@@ -1,6 +1,6 @@
 body
 {
-    font: 14px 'Courier New';
+    font: 18px 'Courier New';
     background-image: url("clouds2.jpg");
 }
 
@@ -93,7 +93,7 @@ div.vague
 .good-button{
     -webkit-appearance: button;
     background-color: rgba(234, 221, 223, 0.4);
-    font-size: 14px;
+    font-size: 18px;
     font-family: 'Courier New';
     display: inline-block;
 }
