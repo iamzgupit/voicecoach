@@ -1,5 +1,10 @@
+html{
+    width:100%;
+}
+
 body
 {
+    width:100%;
     font: 18px 'Courier New';
     background-image: url("clouds2.jpg");
 }
@@ -99,15 +104,19 @@ div.vague
 }
 
 .form-control{
-    display:inline;
-    width:160px;
+    width:150px;
     height:27px;
 }
 
 .form-control2{
-    display:inline;
-    width:182px;
+    width:172px;
     height:27px;
+    margin-bottom:5px;
+}
+
+form{
+    width:100%;
+    /*text-align: center;*/
 }
 
 .accuracy {
@@ -121,4 +130,21 @@ div.vague
 
 .checkme{
     text-align: left;
+}
+
+.formdiv{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+div.audiodiv{
+    text-align: left;
+}
+
+label{
+    font-weight: 100;
 }
