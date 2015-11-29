@@ -7,27 +7,36 @@ routine builder
 {% block content %}
 <link href="../static/text-player.css" type="text/css" rel="stylesheet" />
 <link href="../static/styles.css" type="text/css" rel="stylesheet" />
-</br>
-</br>
+<br>
+<br>
+<br>
+<br>
+<div class="text-center">
 <form action="/routine_adder" method="get">
     Routine name: <input type="text" class="form-control form-control2 good-button" name="RoutineName"><br>
     Need it serves: <input type="text" class="form-control good-button" name="RoutineNeed"><br>
-  </br>
+  <br>
+  <br>
+<br>
+<br>
+<br>
+<br>
   <input type="checkbox" name="audio_file" value="tiny_oo">tiny oo 
-    </br>    <audio controls>
+    </br><audio controls>
   <source src="../static/tiny_oo.mp3" type="audio/mpeg">
 <!--   <source src="bratty_a.mp3" type="audio/mp3">
   <source src="tongue_trills.mp3" type="audio/mp3"> -->
-</audio><br><br>
+</audio>
+<br><br>
  <input type="checkbox" name="audio_file" value="bratty_a">bratty a     
-   </br>
+   <br>
    <audio controls>
   <source src="../static/bratty_a.mp3" type="audio/mpeg">
 <!--   <source src="bratty_a.mp3" type="audio/mp3">
   <source src="tongue_trills.mp3" type="audio/mp3"> -->
 </audio><br><br>
  <input type="checkbox" name="audio_file" value="tongue_trills">tongue trills     
-   </br>
+   <br>
    <audio controls>
   <source src="../static/tongue_trills.mp3" type="audio/mpeg">
 <!--   <source src="bratty_a.mp3" type="audio/mp3">
@@ -36,8 +45,9 @@ routine builder
   <!-- if the box is checked, create a new row with the associated value 
 and the name of the routine 
 enter that new row into the database -->
-</br>
-</br>
+<br>
+<br>
   <input class="btn btn-default good-button" type="submit" value="Submit">
 </form>
+</div>
 {% endblock %}
