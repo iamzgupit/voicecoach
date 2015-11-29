@@ -1,6 +1,4 @@
 body {
-  max-width:800px;
-  margin:1em;
   font-family:"Courier New", Courier, monospace;
   line-height:1.4em;
   font-size:1.8em;
@@ -131,6 +129,10 @@ a {
   border: none;
   background-size: 50% 50%;
   background-position: center;
+}
+
+.pt-controls{
+  margin:30px;
 }
 
 /* Utility class to hide elements if no links found on page load */
