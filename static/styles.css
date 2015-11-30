@@ -193,6 +193,6 @@ label{
 }
 
 @media (max-width: 500px) {
-    button { width: 100px;
+    .good-button { color: red;
     }
 }
