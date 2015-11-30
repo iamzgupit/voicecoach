@@ -5,7 +5,7 @@ html{
 body
 {
     width:100%;
-    font: 18px 'Courier New',;
+    font: 18px 'Courier New',"Times New Roman";
     background-image: url("clouds2.jpg");
     background-repeat: no-repeat;
 }
