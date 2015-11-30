@@ -5,7 +5,7 @@ html{
 body
 {
     width:100%;
-    font: 18px 'Courier New';
+    font: 18px 'Courier New',;
     background-image: url("clouds2.jpg");
     background-repeat: no-repeat;
 }
@@ -190,4 +190,9 @@ label{
 .collapsing {
     overflow: hidden!important;
 }
+}
+
+@media (min-width: 500px) {
+    button { width: 100px;
+    }
 }
