@@ -10,6 +10,10 @@ body
     background-repeat: no-repeat;
 }
 
+img{
+    min-height: 100%;
+}
+
 #mainNav
 {
     background-color:#eae7df;
@@ -191,8 +195,8 @@ label{
     overflow: hidden!important;
 }
 }
-
+/*
 @media (max-width: 500px) {
     #button-1 { background-color: red;
     }
-}
+}*/
