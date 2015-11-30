@@ -145,6 +145,10 @@ div.audiodiv{
     text-align: left;
 }
 
+.audiodivs{
+    font-weight:bold;
+}
+
 label{
     font-weight: 100;
 }

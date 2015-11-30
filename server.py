@@ -25,6 +25,12 @@ def index():
 
     return render_template("home.html")
 
+@app.route('/about')
+def about():
+    """About VoiceCoach page."""
+
+    return render_template("about.html")
+
 @app.route('/practice_selection')
 def practice_selection():
     """Invites the user to choose either choose from saved routines or to create a new routine."""
