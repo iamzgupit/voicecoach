@@ -31,6 +31,12 @@ def about():
 
     return render_template("about.html")
 
+@app.route('/contact')
+def contact():
+    """Contact page."""
+
+    return render_template("contact.html")
+
 @app.route('/practice_selection')
 def practice_selection():
     """Invites the user to choose either choose from saved routines or to create a new routine."""
