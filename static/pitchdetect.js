@@ -1,3 +1,10 @@
+/*T he following code is rooted in Chris Wilson's 
+pitch detector : https://github.com/cwilso/PitchDetect.
+Blake Gilmore restructured and added to Chris' code to 
+create a pitch matcher, which allows you to try to match
+ the pitch of your favorite song. See code for the matcher below autoCorrelate().
+*/
+
 /*
 The MIT License (MIT)
 
@@ -12,14 +19,6 @@ furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 */
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -50,6 +49,7 @@ targetNoteNum=168,
 pathToSong="../static/new_recording_2.ogg";
 notesRight=0;
 
+// loads the song when a button is clicked 
 function loadSong() {
 	audioContext = new AudioContext();
 	MAX_SIZE = Math.max(4,Math.floor(audioContext.sampleRate/5000));	// corresponds to a 5kHz signal
@@ -99,8 +99,7 @@ function loadSong() {
 	  	return false;
 	};
 
-}
-// this closes the onload function for the song
+} // close the onload function for the song
 
 function error() {
     alert('Stream generation failed.');
@@ -129,6 +128,7 @@ function gotStream(stream) {
     updatePitch();
 }
 
+// mostly for testing purposes-plays a single tone
 function toggleOscillator() {
     if (isPlaying) {
         //stop playing and return
@@ -155,6 +155,8 @@ function toggleOscillator() {
     return "stop";
 }
 
+// called when it's the user's turn to sing
+// calls updatePitch() continually to result in a stream of notes
 function toggleLiveInput() {
     userCount+=1;
     notes=[];
@@ -183,6 +185,8 @@ function toggleLiveInput() {
         }, gotStream);
 }
 
+// called to play target audio for matching
+// calls updatePitch() continually to result in a stream of notes
 function togglePlayback() {
     if (isPlaying) {
         //stop playing and return
@@ -216,8 +220,10 @@ var tracks = null;
 var buflen = 1024;
 var buf = new Float32Array( buflen );
 
+// the notes
 var noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
+// start of the math to calculate the notes
 function noteFromPitch( frequency ) {
 	var noteNum = 12 * (Math.log( frequency / 440 )/Math.log(2) );
 	return Math.round( noteNum ) + 69;
@@ -269,6 +275,7 @@ function autoCorrelateFloat( buf, sampleRate ) {
 
 var MIN_SAMPLES = 0;  // will be initialized when AudioContext is created.
 
+// yields a number 'ac' that's used to get the note
 function autoCorrelate( buf, sampleRate ) {
 	var SIZE = buf.length;
 	var MAX_SAMPLES = Math.floor(SIZE/2);
@@ -329,8 +336,9 @@ function tunerShow(){
     $("#tuner_stuff").css("display", "block");
 }
 
+// clear the page and set up the tuner when you click on freeplay
+// start showing notes
 $(".freeplay-button").on('click',function(){
-    console.log("you entered freeplay");
     targetNoteNum=1000;
     doEasy();
     $("#level_buttons").css("display","none");
@@ -353,16 +361,20 @@ $('.challenge-button').on('click', function(){
     tunerShow();
 });
 
+// change settings for challenge mode
 function doChallenge(){
     targetNoteNum=290;
     pathToSong="../static/mariah_sample.ogg";
     loadSong();
 }
 
+// load song for easy mode
 function doEasy(){
     loadSong();
 }
 
+// calculate the user's accuracy by comparing the 
+// array of target notes to the array of notes the user sang 
 function calculateAccuracy(){
     for (i=0;i<notes.length;i++){
         if(notes[i] !== targetNotes[i]){
@@ -395,6 +407,13 @@ function calculateAccuracy(){
     userCount=0;
 }
 
+/*
+if the length of the array of notes is longer than the specified value, 
+calculate the accuracy (if the user has sang their notes)
+OR
+save the array as the target array for calculation 
+after the user has sang their notes as well
+*/
 function checkNote(noteString){
     if (notes.length<targetNoteNum){
         // 
@@ -415,6 +434,7 @@ function checkNote(noteString){
     }
 }
 
+// uses the number calculated above to yield a note from noteStrings
 function updatePitch( time ) {
 	var cycles = new Array;
 	analyser.getFloatTimeDomainData( buf );
@@ -477,3 +497,4 @@ function updatePitch( time ) {
 		window.requestAnimationFrame = window.webkitRequestAnimationFrame;
 	rafID = window.requestAnimationFrame( updatePitch );
 }
+

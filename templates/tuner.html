@@ -16,7 +16,7 @@ voicecoach
          <button id="button1" class="btn btn-default easy-button good-button">easy</button>
          <button id="button1" class="btn btn-default challenge-button good-button">challenge</button>
       </p>
-   </div>
+   </div>  <!-- close level buttons div -->
    <div id="tuner_stuff">
       <p>
          <button id="listen-button" class="btn btn-default easy-button good-button" onclick="this.innerText = togglePlayback();">listen</button>
@@ -29,15 +29,16 @@ voicecoach
          <div class="note"><span id="note">--</span></div>
          <canvas id="output" width=300 height=42></canvas>
          <div id="detune"><span id="detune_amt">--</span><span id="flat">cents &#9837;</span><span id="sharp">cents &#9839;</span></div>
-      </div>
-   </div>
+      </div> <!-- close detector div -->
+   </div> <!-- close tuner stuff -->
+
    <!-- bootstrap alert that only shows up when there's a value for calculateAccuracy-->
    <br> 
    <div id="index-alert" class="alert alert-info accuracy alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
    </div>
-</div>
-<!-- closes level and tuner stuff and alert -->
+</div><!-- close outer div-->
+
 <!-- just used for debugging
    <canvas id="waveform" width="512" height="256"></canvas>
    -->
