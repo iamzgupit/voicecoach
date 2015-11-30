@@ -1,4 +1,4 @@
-/*T he following code is rooted in Chris Wilson's 
+/*The following code builds upon Chris Wilson's 
 pitch detector : https://github.com/cwilso/PitchDetect.
 Blake Gilmore restructured and added to Chris' code to 
 create a pitch matcher, which allows you to try to match
@@ -341,18 +341,16 @@ function tunerShow(){
 $(".freeplay-button").on('click',function(){
     targetNoteNum=1000;
     doEasy();
-    $("#level_buttons").css("display","none");
     $("#listen-button").css("display","none");
     $("#myturn").css("display","none");
     $("#return-button").css("display", "block");
-    $("#tuner_stuff").css("display", "block");
     toggleLiveInput();
 });
+
 
 // when you click on easy, call the function to make tuner_stuff show
 $(".easy-button").on('click', function(){ 
     doEasy();
-    tunerShow();
 });
 
 // when you click on challenge, call the function to make tuner_stuff show
@@ -371,6 +369,7 @@ function doChallenge(){
 // load song for easy mode
 function doEasy(){
     loadSong();
+    tunerShow();
 }
 
 // calculate the user's accuracy by comparing the 
