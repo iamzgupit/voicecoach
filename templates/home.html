@@ -1,15 +1,13 @@
 {% extends "base.html" %}
-
 {% block title %}
 voicecoach
 {% endblock %}
-
 {% block content %}
 <!-- button to practice using a routine -->
 <div id="extending">
-    {% for flash in get_flashed_messages() %}
-      <div class="alert alert-danger" style="width:90%; margin:0 auto;">{{ flash }}</div>
-    {% endfor %}
+{% for flash in get_flashed_messages() %}
+<div class="alert alert-danger" style="width:90%; margin:0 auto;">{{ flash }}</div>
+{% endfor %}
 </br>
 </br>
 </br>
@@ -17,16 +15,16 @@ voicecoach
 </br>
 </br>
 <div class="text-center">
-</br>
-<!-- button to tune your voice-->
-<form action="/tuner">
-    <input class="btn btn-default good-button" id="button1" type="submit" value="how's my pitch?">
-</form>
-</br>
-<form action="/practice_selection">
-    <input class="btn btn-default good-button" id="button1" type="submit" value="practice">
-</form>
-</br>
+   </br>
+   <!-- button to tune your voice-->
+   <form action="/tuner">
+      <input class="btn btn-default good-button" id="button1" type="submit" value="how's my pitch?">
+   </form>
+   </br>
+   <form action="/practice_selection">
+      <input class="btn btn-default good-button" id="button1" type="submit" value="practice">
+   </form>
+   </br>
 </div>
 </br>
 </br>
@@ -35,6 +33,4 @@ voicecoach
 </br>
 </br>
 </br>
-
 {% endblock %}
-

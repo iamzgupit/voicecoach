@@ -1,10 +1,8 @@
 <!-- adapted from code written by cwilso for the PitchDetect project - https://github.com/cwilso/PitchDetect-->
 {% extends "base.html" %}
-
 {% block title %}
 voicecoach
 {% endblock %}
-
 {% block content %}
 </br>
 </br>
@@ -12,46 +10,47 @@ voicecoach
 </br>
 </br>
 <div class="text-center">
-      <div id="level_buttons">
-         <p>
-            <button id="button1" class="btn btn-default freeplay-button good-button">free play</button>
-            <button id="button1" class="btn btn-default easy-button good-button">easy</button>
-            <button id="button1" class="btn btn-default challenge-button good-button">challenge</button>
-         </p>
+   <div id="level_buttons">
+      <p>
+         <button id="button1" class="btn btn-default freeplay-button good-button">free play</button>
+         <button id="button1" class="btn btn-default easy-button good-button">easy</button>
+         <button id="button1" class="btn btn-default challenge-button good-button">challenge</button>
+      </p>
+   </div>
+   <div id="tuner_stuff">
+      <p>
+         <button id="listen-button" class="btn btn-default easy-button good-button" onclick="this.innerText = togglePlayback();">listen</button>
+         <!-- match -->
+         <button class="btn btn-default easy-button good-button" id="myturn" onclick="toggleLiveInput();">my turn</button>
+         <!--<button onclick="updatePitch(0);">sample</button>-->
+      </p>
+      <div id="detector" class="container vague">
+         <div class="pitch"><span id="pitch">--</span>Hz</div>
+         <div class="note"><span id="note">--</span></div>
+         <canvas id="output" width=300 height=42></canvas>
+         <div id="detune"><span id="detune_amt">--</span><span id="flat">cents &#9837;</span><span id="sharp">cents &#9839;</span></div>
       </div>
-      <div id="tuner_stuff">
-         <p>
-            <button id="listen-button" class="btn btn-default easy-button good-button" onclick="this.innerText = togglePlayback();">listen</button>
-            <!-- match -->
-            <button class="btn btn-default easy-button good-button" id="myturn" onclick="toggleLiveInput();">my turn</button>
-            <!--<button onclick="updatePitch(0);">sample</button>-->
-         </p>
-         <div id="detector" class="container vague">
-            <div class="pitch"><span id="pitch">--</span>Hz</div>
-            <div class="note"><span id="note">--</span></div>
-            <canvas id="output" width=300 height=42></canvas>
-            <div id="detune"><span id="detune_amt">--</span><span id="flat">cents &#9837;</span><span id="sharp">cents &#9839;</span></div>
-         </div>
-      </div>
-      <!-- bootstrap alert that only shows up when there's a value for calculateAccuracy-->
-      <br> 
-      <div id="index-alert" class="alert alert-info accuracy alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-</div> <!-- closes level and tuner stuff and alert -->
-      <!-- just used for debugging
-         <canvas id="waveform" width="512" height="256"></canvas>
-         -->
-      <script src="static/pitchdetect.js"></script>
-      <script>
-         var _gaq = _gaq || [];
-         _gaq.push(['_setAccount', 'UA-35593052-1']);
-         _gaq.push(['_trackPageview']);
-         
-         (function() {
-             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-         })();
-      </script>
+   </div>
+   <!-- bootstrap alert that only shows up when there's a value for calculateAccuracy-->
+   <br> 
+   <div id="index-alert" class="alert alert-info accuracy alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+   </div>
+</div>
+<!-- closes level and tuner stuff and alert -->
+<!-- just used for debugging
+   <canvas id="waveform" width="512" height="256"></canvas>
+   -->
+<script src="static/pitchdetect.js"></script>
+<script>
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-35593052-1']);
+   _gaq.push(['_trackPageview']);
+   
+   (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+</script>
 {% endblock %}
