@@ -190,9 +190,6 @@ label{
 .collapsing {
     overflow: hidden!important;
 }
+.dropdown{
+    
 }
-/*
-@media (max-width: 500px) {
-    #button-1 { background-color: red;
-    }
-}*/
