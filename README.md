@@ -4,6 +4,19 @@ A web app that helps you tune your voice and practice your scales, no need for a
 # Demo
 Visit https://voicecoachdemo.herokuapp.com to see the app in action.
 
+# Technologies
+* Web Audio API
+* Sound Manager 2 API
+* PitchDetect by [cwilso](https://github.com/cwilso/pitchdetect)
+* Pushtape Player by by [zirafa](https://github.com/zirafa/pushtape-player.js/blob/master/README.md)
+* Python
+* Javascript
+* JQuery
+* SQLite	
+* SQLAlchemy
+* Jinja
+* Flask
+  
 # Features
 - pitch detector & matcher
 - check if you're on pitch; see how closely you match a sample audio track or Mariah Carey
@@ -35,6 +48,3 @@ Run the server with python.
 ```sh
 $ python server.py
 ```
-
-# Props
-This app builds upon a pitch detector created by [Chris Wilson](https://github.com/cwilso/pitchdetect) as well as an audio player by [zirafa](https://github.com/zirafa/pushtape-player.js/blob/master/README.md). 
